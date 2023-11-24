@@ -1,0 +1,35 @@
+##A-B_testing
+
+from scipy.stats import t as t_student
+import numpy as np
+import pandas as pd
+
+sample_a = pd.Series([3.4, 4.9, 2.8, 5.5, 3.7, 2.5, 4.3, 4.6, 3.7, 3.4])
+sample_b = pd.Series([0.3, 1.2, 1.2, 1.7, 1.1, 0.6, 1.2, 1.5, 0.5, 0.7])
+
+mean_a = sample_A.mean()
+stdv_a = sample_A.std()
+
+mean_b = sample_b.mean()
+stdv_b = sample_b.std()
+
+significance = 0.05
+confidence = 1 - significance
+n_a = len(sample_a)
+n_b = len(sample_b)
+d_0 = 2
+
+grade_of_liberty = n_a + n_b - 2
+
+t_alpha = t_student.ppf(confiance, grade_of_liberty)
+
+numerator = (mean_a - mean_b) - d_0
+denominator = np.sqrt((stdv_a ** 2 / n_a) + (stdv_b ** 2 / n_b))
+t = numerador / denominator
+
+print('t =', round(t, 4))
+
+if(t >= t_alpha):
+    print('Reject H0')
+else:
+    print('Acept H0')
