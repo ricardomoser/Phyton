@@ -1,0 +1,21 @@
+from statsmodels.stats.weightstats import DescrStatsW
+
+sample_a = pd.Series([3.4, 4.9, 2.8, 5.5, 3.7, 2.5, 4.3, 4.6, 3.7, 3.4])
+sample_b = pd.Series([0.3, 1.2, 1.2, 1.7, 1.1, 0.6, 1.2, 1.5, 0.5, 0.7])
+
+significance = 0.05
+
+test_a = DescrStatsW(shampoo_Novo)
+test_b = DescrStatsW(shampoo_Antigo)
+test = test_A.get_compare(test_B)
+
+t, p_valor, df = test.ttest_ind(alternative='larger', value=2)
+
+print('t =', round(t, 4))
+print('p-valor =', round(p_valor, 4))
+print('grade_of_liberty =', df)
+
+if(p_valor <= significance):
+    print('Reject H0')
+else:
+    print('Acept H0')
